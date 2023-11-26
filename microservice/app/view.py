@@ -15,23 +15,17 @@ def home():
 
 @app.route('/get_articles', methods=['GET'])
 @cache.cached()
-@limiter.limit("30 per hour")
+#@limiter.limit("30 per hour")
 def get_articles():
     product_data = fetch_articles()
     if not product_data:
         return jsonify({"error": "Failed to fetch articles from drupal"}), 500
 
-
-# Échappez les données de sortie à l'aide de bleach
-    # cleaned_data = bleach.clean(
-    #     product_data, tags=[], attributes={}, styles=[], strip=True
-    # )
-
     return product_data
 
 
 @app.route('/add_article', methods=['POST'])
-@limiter.limit("3 per hour")
+#@limiter.limit("20 per hour")
 def add_article():
 
     title = request.json.get('title')

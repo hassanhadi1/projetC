@@ -11,7 +11,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "hadi-s3"
+    bucket = "Hadi-s3"
     key = "drupal.tfstate"
     region = "eu-west-1"
   }

@@ -1,11 +1,11 @@
 variable "app" {
   type = string
-  default = "drupal"
+  default = "ms"
 }
 
 variable "user" {
   type = string
-  default = "hadi"
+  default = "Hadi"
 }
 
 variable "az_a" {

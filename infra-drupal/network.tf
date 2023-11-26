@@ -1,72 +1,14 @@
-// Subnet privé 1
-resource "aws_subnet" "priv1" {
+// Subnet public 3
+resource "aws_subnet" "pub3" {
     vpc_id = data.aws_vpc.vpc.id
-    cidr_block = "10.0.50.0/24"
+    cidr_block = "10.0.42.0/24"
     availability_zone = "${var.az_a}"
     tags = {
-      Name = "${var.user}-${var.app}-priv1"
+      Name = "${var.user}-${var.app}-pub3"
     }
 }
 
-resource "aws_route_table" "priv1-rt" {
-    vpc_id = data.aws_vpc.vpc.id
-
-    route {
-        cidr_block = "0.0.0.0/0"
-        gateway_id = data.aws_nat_gateway.ngw.id
-    }
-
-    tags = {
-      Name = "${var.user}-${var.app}-priv1-rt"
-    }
-}
-
-resource "aws_route_table_association" "priv1-ass" {
-    subnet_id = aws_subnet.priv1.id
-    route_table_id = aws_route_table.priv1-rt.id
-}
-
-// Subnet privé 2
-resource "aws_subnet" "priv2" {
-    vpc_id = data.aws_vpc.vpc.id
-    cidr_block = "10.0.51.0/24"
-    availability_zone = "${var.az_b}"
-    tags = {
-      Name = "${var.user}-${var.app}-priv2"
-    }
-}
-
-resource "aws_route_table" "priv2-rt" {
-    vpc_id = data.aws_vpc.vpc.id
-
-    route {
-        cidr_block = "0.0.0.0/0"
-        gateway_id = data.aws_nat_gateway.ngw.id
-    }
-
-    tags = {
-      Name = "${var.user}-${var.app}-priv2-rt"
-    }
-}
-
-resource "aws_route_table_association" "priv2-ass" {
-    subnet_id = aws_subnet.priv2.id
-    route_table_id = aws_route_table.priv2-rt.id
-}
-
-
-
-// Subnet public 1
-resource "aws_subnet" "pub1" {
-    vpc_id = data.aws_vpc.vpc.id
-    cidr_block = "10.0.40.0/24"
-    availability_zone = "${var.az_a}"
-    tags = {
-      Name = "${var.user}-${var.app}-pub1"
-    }
-}
-
-resource "aws_route_table" "pub1-rt" {
+resource "aws_route_table" "pub3-rt" {
     vpc_id = data.aws_vpc.vpc.id
 
     route {
@@ -75,39 +17,68 @@ resource "aws_route_table" "pub1-rt" {
     }
 
     tags = {
-      Name = "${var.user}-${var.app}-pub1-rt"
+      Name = "${var.user}-${var.app}-pub3-rt"
     }
 }
 
-resource "aws_route_table_association" "pub1-ass" {
-    subnet_id = aws_subnet.pub1.id
-    route_table_id = aws_route_table.pub1-rt.id
+resource "aws_route_table_association" "pub3-ass" {
+    subnet_id = aws_subnet.pub3.id
+    route_table_id = aws_route_table.pub3-rt.id
 }
-
-// Subnet public 2
-resource "aws_subnet" "pub2" {
+#######################################################################################################################
+// Subnet privé 5
+resource "aws_subnet" "priv5" {
     vpc_id = data.aws_vpc.vpc.id
-    cidr_block = "10.0.41.0/24"
-    availability_zone = "${var.az_b}"
+    cidr_block = "10.0.54.0/24"
+    availability_zone = "${var.az_a}"
     tags = {
-      Name = "${var.user}-${var.app}-pub2"
+      Name = "${var.user}-${var.app}-priv5"
     }
 }
 
-resource "aws_route_table" "pub2-rt" {
+resource "aws_route_table" "priv5-rt" {
     vpc_id = data.aws_vpc.vpc.id
 
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = data.aws_internet_gateway.igw.id
+        gateway_id = data.aws_nat_gateway.ngw.id
     }
 
     tags = {
-      Name = "${var.user}-${var.app}-pub2-rt"
+      Name = "${var.user}-${var.app}-priv5-rt"
     }
 }
 
-resource "aws_route_table_association" "pub2-ass" {
-    subnet_id = aws_subnet.pub2.id
-    route_table_id = aws_route_table.pub2-rt.id
+resource "aws_route_table_association" "priv5-ass" {
+    subnet_id = aws_subnet.priv5.id
+    route_table_id = aws_route_table.priv5-rt.id
+}
+
+
+// Subnet privé 6
+resource "aws_subnet" "priv6" {
+    vpc_id = data.aws_vpc.vpc.id
+    cidr_block = "10.0.55.0/24"
+    availability_zone = "${var.az_b}"
+    tags = {
+      Name = "${var.user}-${var.app}-priv6"
+    }
+}
+
+resource "aws_route_table" "priv6-rt" {
+    vpc_id = data.aws_vpc.vpc.id
+
+    route {
+        cidr_block = "0.0.0.0/0"
+        gateway_id = data.aws_nat_gateway.ngw.id
+    }
+
+    tags = {
+      Name = "${var.user}-${var.app}-priv6-rt"
+    }
+}
+
+resource "aws_route_table_association" "priv6-ass" {
+    subnet_id = aws_subnet.priv6.id
+    route_table_id = aws_route_table.priv6-rt.id
 }

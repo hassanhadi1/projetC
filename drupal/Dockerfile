@@ -1,5 +1,5 @@
 # Use an official Drupal base image
-FROM drupal:10.1.2-apache
+FROM drupal:10.0.9-php8.2-apache-bullseye
 
 # Install dependencies
 RUN apt-get update && \

@@ -24,7 +24,7 @@ class TestIntegrationSupprimerArticle(unittest.TestCase):
                 "title": "Article à supprimer",
                 "content": "Contenu de l'article à supprimer",
                 "username": "admin",
-                "password": "azerty12345"
+                "password": "admin"
             }
             response = self.app.post('/add_article', json=article_data)
             self.assertEqual(response.status_code, 201)
@@ -37,7 +37,7 @@ class TestIntegrationSupprimerArticle(unittest.TestCase):
 
             auth = {
                 "username": "admin",
-                "password": "azerty12345"
+                "password": "admin"
             }
             # Supprimez l'article
             response = self.app.delete(

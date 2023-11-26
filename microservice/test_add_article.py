@@ -27,7 +27,7 @@ class TestIntegrationAjouterArticle(unittest.TestCase):
                 "title": "Mon Titre",
                 "content": "Contenu de l'article",
                 "username": "admin",
-                "password": "azerty12345"
+                "password": "admin"
             }
 
             response = self.app.post('/add_article', json=article_data)

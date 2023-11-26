@@ -7,7 +7,8 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from prometheus_flask_exporter.multiprocess import GunicornPrometheusMetrics
 import os
-
+from sqlalchemy.exc import OperationalError
+from time import sleep
 
 os.environ['PROMETHEUS_MULTIPROC_DIR'] = '/tmp'
 os.environ['prometheus_multiproc_dir'] = '/tmp'
@@ -23,8 +24,7 @@ app.config['CACHE_REDIS_URL'] = config("REDIS_URL")
 app.config['CACHE_DEFAULT_TIMEOUT'] = config("DEFAULT_TIMEOUT")
 cache = Cache(app)
 
-CORS(app, resources={r"/*": {
-    "origins": f"https://{config('DRUPAL_CONTAINER_NAME')}"}})
+CORS(app, resources={r"/*": {"origins": f"https://{config('DRUPAL_CONTAINER_NAME')}"}})
 
 limiter = Limiter(
     get_remote_address,
@@ -36,6 +36,19 @@ limiter = Limiter(
 from app.view import bp
 app.register_blueprint(bp)
 
-# from app.models import Article
-with app.app_context():
-    db.create_all()
+# Ajout de la gestion de la reconnexion
+max_retries = 10
+retry_delay = 5
+retries = 0
+
+while True:
+    try:
+        with app.app_context():
+            db.create_all()
+        break
+    except OperationalError as e:
+        if retries >= max_retries:
+            raise e
+        print(f"Database connection failed. Retrying in {retry_delay} seconds...")
+        retries += 1
+        sleep(retry_delay)
