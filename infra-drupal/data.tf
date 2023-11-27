@@ -16,3 +16,10 @@ data "aws_nat_gateway" "ngw" {
   }
 }
 
+data "template_file" "install_ansible" {
+  template = file("./install_ansible.tftpl")
+
+  vars = {
+    ec2_drupal_private_ip = "aws_instance.ec2_drupal.private_ip"
+  }
+}
