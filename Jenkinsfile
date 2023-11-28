@@ -21,18 +21,18 @@ pipeline {
 
         stage("deployement de drupal"){
             steps{
-                sh ```
+                sh '''
                     cd infra-drupal/
                     terraform apply --auto-approve
-                ```
+                '''f
             }
         }
         stage("deployement de microservice"){
             steps{
-                sh ``` 
+                sh ''' 
                     cd infra-microservice/
                     terraform apply --auto-approve
-                ```
+                '''
             }
         }
     }
