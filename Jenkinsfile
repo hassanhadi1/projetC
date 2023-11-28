@@ -15,8 +15,8 @@ pipeline {
                 sh('cp -f $MS_ENV microservice/.env && chmod 400 microservice/.env')
                 sh('cp -f $DRUPAL_TFVARS infra-drupal/config-auto.tfvars && chmod 400 infra-drupal/config-auto.tfvars')
                 sh('cp -f $MS_TFVARS infra-microservice/config-auto.tfvars && chmod 400 infra-microservice/config-auto.tfvars')
-                sh('cd -f $KEY infra-drupal/key.pem && chmod 400 infra-drupal/key.pem')
-                sh('cd -f $KEY infra-microservice/key.pem && chmod 400 infra-microservice/key.pem')
+                sh('cp -f $KEY infra-drupal/key.pem && chmod 400 infra-drupal/key.pem')
+                sh('cp -f $KEY infra-microservice/key.pem && chmod 400 infra-microservice/key.pem')
             }
         }
 
