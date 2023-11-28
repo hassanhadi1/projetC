@@ -2,7 +2,7 @@ resource "null_resource" "copy_file1" {
   depends_on = [aws_instance.ec2-ms1]
 
   provisioner "file" {
-    source      = "/home/ubuntu/projetC/microservice"
+    source      = "microservice"
     destination = "/home/ubuntu/microservice"  # Chemin sur l'instance EC2
     connection {
       type        = "ssh"
@@ -39,7 +39,7 @@ resource "null_resource" "copy_file2" {
   depends_on = [aws_instance.ec2-ms2]
 
   provisioner "file" {
-    source      = "/home/ubuntu/projetC/microservice"
+    source      = "microservice"
     destination = "/home/ubuntu/microservice"  # Chemin sur l'instance EC2
     connection {
       type        = "ssh"

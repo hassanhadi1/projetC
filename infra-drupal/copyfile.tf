@@ -2,7 +2,7 @@ resource "null_resource" "copy_file" {
   depends_on = [aws_instance.ec2-drupal]
 
   provisioner "file" {
-    source      = "/home/ubuntu/projetC/drupal"
+    source      = "drupal"
     destination = "/home/ubuntu/drupal"  # Chemin sur l'instance EC2
     connection {
       type        = "ssh"
