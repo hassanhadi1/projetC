@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                     cd infra-drupal/
                     terraform apply --auto-approve
-                '''f
+                '''
             }
         }
         stage("deployement de microservice"){
