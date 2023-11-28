@@ -5,6 +5,7 @@ resource "aws_instance" "ec2-drupal" {
   subnet_id = aws_subnet.pub3.id
   associate_public_ip_address = true
   vpc_security_group_ids = [aws_security_group.sg-drupal.id]
+
   tags = {
     Name = "${var.user}-ec2-${var.app}"
   }
