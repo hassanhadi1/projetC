@@ -15,8 +15,8 @@ resource "aws_db_instance" "mysql-db" {
   engine               = "mysql"
   engine_version       = "8.0.33"
   instance_class       = "db.t2.micro"
-  username             = "admin"
-  password             = "admin1234"
+  username             = "${var.MYSQL_USER}"
+  password             = "${var.MYSQL_PASSWORD}"
   skip_final_snapshot  = true
   db_subnet_group_name = aws_db_subnet_group.subgroup.name
   identifier = "${var.user}-${var.app}-db"

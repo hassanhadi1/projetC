@@ -17,5 +17,9 @@ data "aws_nat_gateway" "ngw" {
 }
 
 data "aws_acm_certificate" "certificate" {
-  domain = ""
+  domain = "kevin-billerach.me"
+}
+
+data "aws_security_group" "jenkins" {
+    id = "sg-0525a3a2f564df534"
 }

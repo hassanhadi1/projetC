@@ -116,7 +116,7 @@ resource "aws_route_table_association" "priv4-ass" {
 // Subnet public 1
 resource "aws_subnet" "pub1" {
     vpc_id = data.aws_vpc.vpc.id
-    cidr_block = "10.0.40.0/24"
+    cidr_block = "10.0.47.0/24"
     availability_zone = "${var.az_a}"
     tags = {
       Name = "${var.user}-${var.app}-pub1"
@@ -144,7 +144,7 @@ resource "aws_route_table_association" "pub1-ass" {
 // Subnet public 2
 resource "aws_subnet" "pub2" {
     vpc_id = data.aws_vpc.vpc.id
-    cidr_block = "10.0.41.0/24"
+    cidr_block = "10.0.48.0/24"
     availability_zone = "${var.az_b}"
     tags = {
       Name = "${var.user}-${var.app}-pub2"

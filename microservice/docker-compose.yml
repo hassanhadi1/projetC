@@ -1,12 +1,5 @@
 version: '3'
 services:
-  mysql:
-    image: mysql:5.7.8
-    env_file:
-      - .env
-    networks:
-      - projetB
-
   microservice:
     build:
       context: .
@@ -16,13 +9,5 @@ services:
       - "443:443"
       - "9200:9200"
     restart: always
-    networks:
-      - projetB
     tmpfs:
       - /tmp
-    depends_on:
-    - mysql
-
-networks:
-  projetB:
-    external: true

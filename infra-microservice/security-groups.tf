@@ -36,16 +36,10 @@ resource "aws_security_group" "sg-ms" {
     security_groups = [aws_security_group.sg-lb.id]
   }
   ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    security_groups = [aws_security_group.sg-lb.id]
-  }
-  ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    security_groups = [data.aws_security_group.sg-bastion.id]
+    security_groups = [data.aws_security_group.jenkins.id]
     self = true
   }
   egress {
@@ -67,7 +61,7 @@ resource "aws_security_group" "sg-db" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    security_groups = [aws_security_group.sg-drupal.id]
+    security_groups = [aws_security_group.sg-ms.id]
   }
   egress {
     from_port   = 0

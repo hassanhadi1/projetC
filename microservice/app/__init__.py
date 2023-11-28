@@ -7,8 +7,6 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from prometheus_flask_exporter.multiprocess import GunicornPrometheusMetrics
 import os
-from sqlalchemy.exc import OperationalError
-from time import sleep
 
 os.environ['PROMETHEUS_MULTIPROC_DIR'] = '/tmp'
 os.environ['prometheus_multiproc_dir'] = '/tmp'
@@ -36,19 +34,5 @@ limiter = Limiter(
 from app.view import bp
 app.register_blueprint(bp)
 
-# Ajout de la gestion de la reconnexion
-max_retries = 10
-retry_delay = 5
-retries = 0
-
-while True:
-    try:
-        with app.app_context():
-            db.create_all()
-        break
-    except OperationalError as e:
-        if retries >= max_retries:
-            raise e
-        print(f"Database connection failed. Retrying in {retry_delay} seconds...")
-        retries += 1
-        sleep(retry_delay)
+with app.app_context():
+    db.create_all()

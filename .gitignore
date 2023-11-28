@@ -1,1 +1,4 @@
 .terraform/
+config-auto.tfvars
+.env
+key.pem

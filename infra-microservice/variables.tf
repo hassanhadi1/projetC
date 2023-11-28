@@ -5,7 +5,7 @@ variable "app" {
 
 variable "user" {
   type = string
-  default = "Hadi"
+  default = "hadi"
 }
 
 variable "az_a" {
@@ -18,5 +18,14 @@ variable "az_b" {
   default = "eu-west-1b"
 }
 
+variable "MYSQL_USER" {
+  type = string
+  sensitive = true
+}
+
+variable "MYSQL_PASSWORD" {
+  type = string
+  sensitive = true
+}
 
 

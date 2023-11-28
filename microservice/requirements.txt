@@ -32,6 +32,7 @@ prometheus-flask-exporter==0.22.4
 pycodestyle==2.11.0
 pyflakes==3.1.0
 Pygments==2.16.1
+PyMySQL==1.1.0
 python-decouple==3.8
 redis==5.0.0
 requests==2.31.0
@@ -47,4 +48,3 @@ WTForms==3.0.1
 zipp==3.16.2
 prometheus-flask-exporter==0.22.4
 prometheus_client
-pymysql==0.7.2
