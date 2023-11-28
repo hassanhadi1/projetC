@@ -24,6 +24,7 @@ pipeline {
             steps{
                 sh '''
                     cd infra-drupal/
+                    terraform init
                     terraform apply --auto-approve
                 '''
             }
@@ -32,6 +33,7 @@ pipeline {
             steps{
                 sh ''' 
                     cd infra-microservice/
+                    terraform init
                     terraform apply --auto-approve
                 '''
             }
