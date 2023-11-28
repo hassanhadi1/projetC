@@ -1,4 +1,5 @@
 pipeline {
+    agent any
 
     environment{
         DRUPAL_ENV= credentials('drupal-env')
