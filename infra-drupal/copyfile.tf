@@ -7,7 +7,7 @@ resource "null_resource" "copy_file" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/home/ubuntu/projetC/infra-drupal/key.pem")
+      private_key = file("key.pem")
       host        = aws_instance.ec2-drupal.public_ip
     }
   }
@@ -28,7 +28,7 @@ resource "null_resource" "provision" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/home/ubuntu/projetC/infra-drupal/key.pem")
+      private_key = file("key.pem")
       host        = aws_instance.ec2-drupal.public_ip
     }
   }

@@ -7,7 +7,7 @@ resource "null_resource" "copy_file1" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/home/ubuntu/projetC/infra-microservice/key.pem")
+      private_key = file("key.pem")
       host        = aws_instance.ec2-ms1.private_ip
     }
   }
@@ -28,7 +28,7 @@ resource "null_resource" "provision1" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/home/ubuntu/projetC/infra-microservice/key.pem")
+      private_key = file("key.pem")
       host        = aws_instance.ec2-ms1.private_ip
     }
   }
@@ -44,7 +44,7 @@ resource "null_resource" "copy_file2" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/home/ubuntu/projetC/infra-microservice/key.pem")
+      private_key = file("key.pem")
       host        = aws_instance.ec2-ms2.private_ip
     }
   }
@@ -65,7 +65,7 @@ resource "null_resource" "provision2" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/home/ubuntu/projetC/infra-microservice/key.pem")
+      private_key = file("key.pem")
       host        = aws_instance.ec2-ms2.private_ip
     }
   }
