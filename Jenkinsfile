@@ -11,12 +11,12 @@ pipeline {
     stages{
         stage("creation des fichiers secret"){
             steps{
-                sh('cp -f $DRUPAL_ENV drupal/.env && chmod 444 drupal/.env')
-                sh('cp -f $MS_ENV microservice/.env && chmod 444 microservice/.env')
-                sh('cp -f $DRUPAL_TFVARS infra-drupal/config.auto.tfvars && chmod 444 infra-drupal/config.auto.tfvars')
-                sh('cp -f $MS_TFVARS infra-microservice/config.auto.tfvars && chmod 444 infra-microservice/config.auto.tfvars')
-                sh('cp -f $KEY infra-drupal/key.pem && chmod 444 infra-drupal/key.pem')
-                sh('cp -f $KEY infra-microservice/key.pem && chmod 444 infra-microservice/key.pem')
+                sh('cp -f $DRUPAL_ENV drupal/.env && chmod 600 drupal/.env')
+                sh('cp -f $MS_ENV microservice/.env && chmod 600 microservice/.env')
+                sh('cp -f $DRUPAL_TFVARS infra-drupal/config.auto.tfvars && chmod 600 infra-drupal/config.auto.tfvars')
+                sh('cp -f $MS_TFVARS infra-microservice/config.auto.tfvars && chmod 600 infra-microservice/config.auto.tfvars')
+                sh('cp -f $KEY infra-drupal/key.pem && chmod 600 infra-drupal/key.pem')
+                sh('cp -f $KEY infra-microservice/key.pem && chmod 600 infra-microservice/key.pem')
             }
         }
 
