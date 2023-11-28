@@ -12,7 +12,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "hadi-s3"
-    key = "drupal.tfstate"
+    key = "microservice.tfstate"
     region = "eu-west-1"
   }
 }
