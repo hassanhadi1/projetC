@@ -70,6 +70,6 @@ resource "aws_security_group" "sg-db" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "${var.user}-sg-ec2-db"
+    Name = "${var.user}-${var.app}-sg-ec2-db"
   }
 }
