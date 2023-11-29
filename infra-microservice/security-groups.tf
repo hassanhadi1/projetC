@@ -55,7 +55,7 @@ resource "aws_security_group" "sg-ms" {
 
 # SG de la DB
 resource "aws_security_group" "sg-db" {
-  name   = "${var.user}-sg-db"
+  name   = "${var.user}-${var.app}-sg-db"
   vpc_id = data.aws_vpc.vpc.id
   ingress {
     from_port   = 3306
