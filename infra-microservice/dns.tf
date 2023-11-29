@@ -1,6 +1,6 @@
 resource "aws_route53_record" "record" {
   zone_id = "Z04407843NK6AZIR5YB6N"
-  type = "CNAME"
+  type = "A"
   name = "hadi-ms.kevin-billerach.me"
   
   alias {
